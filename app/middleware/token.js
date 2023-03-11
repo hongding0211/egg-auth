@@ -1,7 +1,9 @@
-const { unwrap } = require('../../utils/token');
+const assert = require('assert');
 
 module.exports = options => {
   const { tokenKey } = options;
+
+  assert.strictEqual(typeof tokenKey, 'string', 'A tokenkey is required. Set it in config file.');
 
   return async function token(ctx, next) {
     const token = ctx.cookies.get('token') || ctx.request.query?.token;
@@ -11,13 +13,12 @@ module.exports = options => {
     }
 
     try {
-      const unwrappedToken = unwrap(token, tokenKey);
+      const unwrappedToken = ctx.service.token.unwrapToken(token);
 
       if (!unwrappedToken) {
         ctx.throw(403, 'Invalid token.');
       }
 
-      // 将 token 挂载到 ctx 上
       ctx.token = unwrappedToken;
     } catch {
       ctx.throw(403, 'Invalid token.');
