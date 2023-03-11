@@ -1,6 +1,8 @@
 const { unwrap } = require('../../utils/token');
 
-module.exports = () => {
+module.exports = options => {
+  const { tokenKey } = options;
+
   return async function token(ctx, next) {
     const token = ctx.cookies.get('token') || ctx.request.query?.token;
 
@@ -9,7 +11,7 @@ module.exports = () => {
     }
 
     try {
-      const unwrappedToken = unwrap(token);
+      const unwrappedToken = unwrap(token, tokenKey);
 
       if (!unwrappedToken) {
         ctx.throw(403, 'Invalid token.');
