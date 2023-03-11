@@ -44,8 +44,13 @@ exports.auth = {
 
 ```js
 // {app_root}/config/config.default.js
-exports.auth = {
+exports.token = {
+  // ignore: ''
 };
+exports.traffic = {
+  windowSize: 60 * 1000,
+  maxRequest: 1000,
+}
 ```
 
 see [config/config.default.js](config/config.default.js) for more detail.
