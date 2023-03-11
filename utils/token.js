@@ -1,14 +1,13 @@
 const jwt = require('jsonwebtoken');
 const CryptoJS = require('crypto-js');
 
-const tokenKey =
-  'U2FsdGVkX19Eplk5nQHwc5FlOvcCZjIWkPdLMx3DYI59RYEI72qTu8Y2lvmdCj1r2m7Z1VxF+i+Bfd9KLIIVdA==';
-
 /**
  * @param {any} data data
- * @return {string} token token
+ * @param {string} tokenKey tokenKey
+ * @package {string} tokenKey
+ * @return {string} token
  */
-const wrap = data => {
+const wrap = (data, tokenKey) => {
   const k = `${Math.floor(Date.now() / (2 * 60 * 1000))}_${tokenKey}`;
   const v = JSON.stringify(data);
 
@@ -22,10 +21,12 @@ const wrap = data => {
 };
 
 /**
- *  @param {string} token token
- *  @return {any} data data
+ * @param {string} token token
+ * @param {string} tokenKey tokenKey
+ * @package {string} tokenKey
+ * @return {any} data
  */
-const unwrap = token => {
+const unwrap = (token, tokenKey) => {
   const { iat } = jwt.decode(token);
   const k = `${Math.floor(iat / (2 * 60))}_${tokenKey}`;
   const { data } = jwt.verify(token, k);
