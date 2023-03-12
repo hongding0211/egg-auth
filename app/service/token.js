@@ -1,4 +1,4 @@
-const { unwrap, wrap } = require('../../utils/token');
+const { unwrap, wrap } = require('../utils/token');
 
 const Service = require('egg').Service;
 

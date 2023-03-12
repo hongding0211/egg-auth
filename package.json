@@ -1,6 +1,6 @@
 {
-  "name": "egg-auth",
-  "version": "1.0.0",
+  "name": "@hong97/egg-auth",
+  "version": "0.0.2",
   "description": "",
   "eggPlugin": {
     "name": "auth"
@@ -43,8 +43,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hongding0211/egg-auth"
+    "url": "git+https://github.com/hongding0211/egg-auth.git"
   },
   "author": "hongding",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hongding0211/egg-auth/issues"
+  },
+  "homepage": "https://github.com/hongding0211/egg-auth#readme",
+  "main": "app.js"
 }
