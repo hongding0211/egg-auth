@@ -2,8 +2,8 @@ const jwt = require('jsonwebtoken');
 const CryptoJS = require('crypto-js');
 
 /**
- * @param {any} data
- * @param tokenKey
+ * @param {any} data data
+ * @param {string} tokenKey tokenKey
  * @package {string} tokenKey
  * @return {string} token
  */
@@ -21,10 +21,10 @@ const wrap = (data, tokenKey) => {
 };
 
 /**
- *  @param {string} token
- * @param tokenKey
+ * @param {string} token token
+ * @param {string} tokenKey tokenKey
  * @package {string} tokenKey
- *  @return {any} data
+ * @return {any} data
  */
 const unwrap = (token, tokenKey) => {
   const { iat } = jwt.decode(token);

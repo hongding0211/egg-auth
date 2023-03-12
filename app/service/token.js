@@ -3,15 +3,18 @@ const { unwrap, wrap } = require('../../utils/token');
 const Service = require('egg').Service;
 
 class TokenService extends Service {
-  constructor() {
-    // get tokenkey from config
+  constructor(...args) {
+    super(...args);
+    this._tokenKey = this.config.token.tokenKey;
   }
 
-  setToken(payload) {
+  wrapToken(payload) {
     return wrap(payload, this._tokenKey);
   }
 
-  getToken(token) {
+  unwrapToken(token) {
     return unwrap(token, this._tokenKey);
   }
 }
+
+module.exports = TokenService;
