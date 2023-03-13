@@ -1,10 +1,4 @@
-const assert = require('assert');
-
-module.exports = options => {
-  const { tokenKey } = options;
-
-  assert.strictEqual(typeof tokenKey, 'string', 'A tokenkey is required. Set it in config file.');
-
+module.exports = () => {
   return async function token(ctx, next) {
     const token = ctx.cookies.get('token') || ctx.request.query?.token;
 
