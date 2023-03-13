@@ -1,4 +1,7 @@
 {
+  "parserOptions": {
+    "ecmaVersion": 13
+  },
   "extends": "eslint-config-egg",
   "root": true
 }
