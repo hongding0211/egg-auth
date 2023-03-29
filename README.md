@@ -36,7 +36,7 @@ $ npm i egg-auth --save
 // {app_root}/config/plugin.js
 exports.auth = {
   enable: true,
-  package: 'egg-auth',
+  package: '@hong97/egg-auth',
 };
 ```
 
@@ -45,6 +45,7 @@ exports.auth = {
 ```js
 // {app_root}/config/config.default.js
 exports.token = {
+  tokenKey: 'token_key',
   // ignore: ''
 };
 exports.traffic = {
